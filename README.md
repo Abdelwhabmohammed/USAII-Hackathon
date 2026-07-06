@@ -9,7 +9,7 @@ Built for the USAII Global AI Hackathon 2026 (Undergraduate Track, Challenge 4, 
 ## Tech Stack
 
 - **Framework:** Next.js 16 (App Router) + TypeScript 5
-- **Styling:** Tailwind CSS 4 + shadcn/ui
+- **Styling:** Tailwind CSS 4 + shadcn/ui (New York style)
 - **Animations:** Framer Motion
 - **Icons:** Lucide
 - **Fonts:** Fraunces (serif display) + Inter (sans body) via Google Fonts
