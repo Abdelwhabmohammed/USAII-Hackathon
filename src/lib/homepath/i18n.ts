@@ -130,9 +130,16 @@ export const STRINGS = {
   // Sidebar / app views
   navDashboard: { en: "Dashboard", es: "Panel" },
   navActionPlan: { en: "Action Plan", es: "Plan de Acción" },
+  navTimeline: { en: "Timeline", es: "Cronología" },
   navPrograms: { en: "Programs", es: "Programas" },
   navDocument: { en: "Document Analysis", es: "Análisis de Documentos" },
   navResources: { en: "Resources", es: "Recursos" },
+  navGlossary: { en: "Glossary", es: "Glosario" },
+  navAbout: { en: "About", es: "Acerca de" },
+  printPlan: { en: "Print plan", es: "Imprimir plan" },
+  commandHint: { en: "Cmd+K", es: "Cmd+K" },
+  resumeSession: { en: "Resume previous session", es: "Retomar sesión anterior" },
+  sessionSaved: { en: "Session saved", es: "Sesión guardada" },
 
   // Dashboard
   dashboardTitle: { en: "Your housing dashboard", es: "Tu panel de vivienda" },
