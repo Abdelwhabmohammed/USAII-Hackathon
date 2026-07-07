@@ -6,9 +6,12 @@ export type Phase = "landing" | "intake" | "analyzing" | "app";
 export type AppView =
   | "dashboard"
   | "action-plan"
+  | "timeline"
   | "programs"
   | "document-analysis"
-  | "resources";
+  | "resources"
+  | "glossary"
+  | "about";
 
 export type Language = "en" | "es";
 
