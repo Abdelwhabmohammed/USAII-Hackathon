@@ -4,10 +4,14 @@ import { motion } from "framer-motion";
 import {
   LayoutDashboard,
   ListChecks,
+  CalendarClock,
   Building2,
   FileSearch,
   LifeBuoy,
+  BookOpen,
+  Info,
   AlertTriangle,
+  Printer,
 } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
 import type { AppView } from "@/lib/homepath/types";
@@ -18,17 +22,21 @@ interface SidebarProps {
   onView: (v: AppView) => void;
   analysis: AnalysisResult;
   progressPct: number;
+  onPrint?: () => void;
 }
 
-export function Sidebar({ view, onView, analysis, progressPct }: SidebarProps) {
+export function Sidebar({ view, onView, analysis, progressPct, onPrint }: SidebarProps) {
   const { t } = useLanguage();
 
   const items: { key: AppView; icon: typeof LayoutDashboard; label: string }[] = [
     { key: "dashboard", icon: LayoutDashboard, label: t("navDashboard") },
     { key: "action-plan", icon: ListChecks, label: t("navActionPlan") },
+    { key: "timeline", icon: CalendarClock, label: t("navTimeline") },
     { key: "programs", icon: Building2, label: t("navPrograms") },
     { key: "document-analysis", icon: FileSearch, label: t("navDocument") },
     { key: "resources", icon: LifeBuoy, label: t("navResources") },
+    { key: "glossary", icon: BookOpen, label: t("navGlossary") },
+    { key: "about", icon: Info, label: t("navAbout") },
   ];
 
   const riskColor =
@@ -113,6 +121,17 @@ export function Sidebar({ view, onView, analysis, progressPct }: SidebarProps) {
         </div>
       </div>
 
+      {/* Print button */}
+      {onPrint && (
+        <button
+          onClick={onPrint}
+          className="mt-3 flex w-full items-center gap-2 rounded-xl border border-border/60 bg-card/80 px-3 py-2.5 text-sm font-medium text-foreground transition hover:bg-primary/5 hover:text-primary no-print"
+        >
+          <Printer className="h-4 w-4" />
+          {t("printPlan")}
+        </button>
+      )}
+
       {/* Escalation alert */}
       {analysis.escalationRequired && (
         <div className="mt-3 rounded-2xl border border-rose-300/60 bg-rose-50/70 p-3">
@@ -140,6 +159,7 @@ export function MobileNav({
   onView: (v: AppView) => void;
 }) {
   const { t } = useLanguage();
+  // Show only top 5 most important on mobile to fit
   const items: { key: AppView; icon: typeof LayoutDashboard; label: string }[] = [
     { key: "dashboard", icon: LayoutDashboard, label: t("navDashboard") },
     { key: "action-plan", icon: ListChecks, label: t("navActionPlan") },
@@ -149,7 +169,7 @@ export function MobileNav({
   ];
 
   return (
-    <nav className="sticky bottom-0 z-30 flex w-full justify-around border-t border-border/60 bg-card/95 backdrop-blur lg:hidden">
+    <nav className="sticky bottom-0 z-30 flex w-full justify-around border-t border-border/60 bg-card/95 backdrop-blur lg:hidden no-print">
       {items.map((item) => {
         const isActive = view === item.key;
         return (
